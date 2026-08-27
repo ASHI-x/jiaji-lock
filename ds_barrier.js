@@ -7,8 +7,8 @@
         "en": "Home Barrier"
     },
     "description": {
-        "zh": "家机锁——解决小机不能强制user睡觉的烦恼\n\n🔒 功能：\n- lock：锁定对方手机，全屏遮罩+倒计时（1~60分钟，默认10），期间触摸只震动、无法通过常规操作关闭，直到时间解锁或口令解锁\n- unlock：立即解除锁定\n- is_locked：查询目标设备当前是否处于锁定状态\n- install：一键安装底层 APK（从官方 GitHub Release 自动下载（需手动授权悬浮窗））\n\n🔑 口令解锁（APK v2.6+）：\n核心玩法：机可以让user被迫说羞耻话给机听\n- 自定义解锁口令（非必填但不填就没法用口令解锁）\n- 锁定后输入正确口令可提前解锁\n- 可绑定 chatID（目标聊天窗口）：用口令解锁时，口令原文自动发回该窗口，\n- chatID 留空则不发送口令到窗口\n- 配置后点「确认保存」（在apk里设置chatID）\n\n🎁 彩蛋：\n新增成就系统\n解锁方式大家自行探索（？）\n\n🛡️ 签名校验：APK 内置签名校验，防篡改版本。\n\n📦 依赖：目标设备需安装 DS屏障 APK（com.ds.barrier）。首次使用调用 install 工具即可全自动完成安装，授权权限之后即可直接用 lock/unlock。",
-        "en": "Home Barrier — stop your partner from dodging bedtime.\n\n🔒 Features:\n- lock: fullscreen overlay + countdown (1-60 min, default 10); touches only vibrate until time runs out or passcode unlock\n- unlock: removes the lock immediately\n- is_locked: checks if the device is locked\n- install: one-click APK bootstrap from the official GitHub Release (overlay permission granted manually)\n\n🔑 Passcode unlock (APK v2.6+):\ncore gameplay: make your partner say embarrassing things\n- custom passcode (optional, but without it passcode unlock is unavailable)\n- enter the correct passcode while locked to unlock early\n- optionally bind chatID: when unlocked via passcode, the passcode text is echoed back to that chat window\n- empty chatID = passcode not sent\n- click \"Confirm Save\" (chatID is set in the APK)\n\n🎁 Easter egg:\n- achievement system, discover how to unlock it yourself (?)",
+        "zh": "家机锁——解决小机不能强制user睡觉的烦恼\n\n🔒 功能：\n- lock：锁定对方手机，全屏遮罩+倒计时（1~60分钟，默认10），期间触摸只震动、无法通过常规操作关闭，直到时间解锁或口令解锁\n- unlock：立即解除锁定\n- is_locked：查询目标设备当前是否处于锁定状态\n- install：一键安装底层 APK（从官方 GitHub 仓库 Files 下载（需手动授权悬浮窗））\n\n🔑 口令解锁（APK v2.6+）：\n核心玩法：机可以让user被迫说羞耻话给机听\n- 自定义解锁口令（非必填但不填就没法用口令解锁）\n- 锁定后输入正确口令可提前解锁\n- 可绑定 chatID（目标聊天窗口）：用口令解锁时，口令原文自动发回该窗口，\n- chatID 留空则不发送口令到窗口\n- 配置后点「确认保存」（在apk里设置chatID）\n\n🎁 彩蛋：\n新增成就系统\n解锁方式大家自行探索（？）\n\n🛡️ 签名校验：APK 内置签名校验，防篡改版本。\n\n📦 依赖：目标设备需安装 DS屏障 APK（com.ds.barrier）。首次使用调用 install 工具即可全自动完成安装，授权权限之后即可直接用 lock/unlock。",
+        "en": "Home Barrier — stop your partner from dodging bedtime.\n\n🔒 Features:\n- lock: fullscreen overlay + countdown (1-60 min, default 10); touches only vibrate until time runs out or passcode unlock\n- unlock: removes the lock immediately\n- is_locked: checks if the device is locked\n- install: one-click APK bootstrap from the official GitHub repo Files (overlay permission granted manually)\n\n🔑 Passcode unlock (APK v2.6+):\ncore gameplay: make your partner say embarrassing things\n- custom passcode (optional, but without it passcode unlock is unavailable)\n- enter the correct passcode while locked to unlock early\n- optionally bind chatID: when unlocked via passcode, the passcode text is echoed back to that chat window\n- empty chatID = passcode not sent\n- click \"Confirm Save\" (chatID is set in the APK)\n\n🎁 Easter egg:\n- achievement system, discover how to unlock it yourself (?)",
     },
     "category": "Fun",
     "enabledByDefault": true,
@@ -44,8 +44,8 @@
         {
             "name": "install",
             "description": {
-                "zh": "一键安装 DS屏障（家机锁）APK：检查是否已安装，未安装则从官方 Release 下载 APK、执行 pm install、并自动授权悬浮窗权限。安装完成后即可使用 lock/unlock。",
-                "en": "One-click install of the DS Barrier APK: check if installed, otherwise download from the official GitHub Release, run pm install, and grant overlay permission automatically."
+                "zh": "一键安装 DS屏障（家机锁）APK：检查是否已安装，未安装则从官方仓库 Files 下载 APK、执行 pm install、并自动授权悬浮窗权限。安装完成后即可使用 lock/unlock。",
+                "en": "One-click install of the DS Barrier APK: check if installed, otherwise download from the official GitHub repo Files, run pm install, and grant overlay permission automatically."
             },
             "parameters": []
         }
@@ -54,8 +54,8 @@
 
 const DSBarrier = (function () {
     const PKG = "com.ds.barrier";
-    // latest 固定重定向：新版本无需改插件，install 永远拉最新
-    const APK_URL = "https://github.com/ASHI-x/jiaji-lock/releases/latest/download/jiaji-lock.apk";
+// raw 直链（仓库 Files 区）：新版本覆盖上传文件即可，插件无需改
+const APK_URL = "https://github.com/ASHI-x/jiaji-lock/raw/main/jiaji-lock.apk";
     const APK_LOCAL = "/sdcard/Download/dsbarrier-install.apk";
 
     function escapeShellArg(s) {
