@@ -138,7 +138,6 @@ monitoring：全部完整功能
 ---
 ``` about
 项目地址：github.com/ASHI-x/jiaji-lock
-SHA-256：0f6c8488e0c7f377f7e8e41eb1c7675bcf5f58f0b83c0b76755550a708c874cd
 ```
 ![Status](https://img.shields.io/badge/精神状态-极其稳定-red?style=for-the-badge)
 ![Bug](https://img.shields.io/badge/Bug-下次一定-ff69b4?style=for-the-badge)
