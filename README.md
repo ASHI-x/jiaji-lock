@@ -10,7 +10,6 @@
 ---
 #### *新旧 App 区分*
 
-> 更多的功能请使用完全重置的新app
 > 在旧app的基础上重置了全新的app并添加了更多功能，且高度自定义满足更多不同需求
 
 <details>  
@@ -23,7 +22,7 @@
   |---|---|---|
   | 包名 | `com.ds.barrier` | **`com.as.jiajilock`** |
   | 能力 | 仅全屏锁定遮罩 + 倒计时 + 口令 | 计时、额度、冻结、任务、成就、HTTP/SSE、数据导入导出 |
-  | 工具对比 | 工具只有 4 个（`lock/unlock/is_locked/install`） | 工具有 10+ 个（`status/totals/left/log/route/setlimit/addlimit/resetlimit/locklimit/task/lock/unlock`） |
+  | 工具对比 | 工具只有 4 个（`lock/unlock/is_locked/install`） | 工具有 10+ 个（`status/totals/left/log/route/setlimit/addlimit/resetlimit/locklimit/task/lock/unlock/rights/update`） |
 
 </details>  
 
@@ -42,9 +41,12 @@
 | `left` | 各应用额度剩余 | — | `cap_left` | 无 |
 | `log` | App 内部日志（最近 60 条） | — | `cap_log` | 无 |
 | `route` | 移动路线与停留时长 | — | `cap_route` | 无 |
+| `rights` | 查看当前许可权限 | — | — | 无 |
+
 
 | 高影响工具 | 作用 | 参数 | 需要的许可 | 实际影响 |
 |---|---|---|---|---|
+
 | `setlimit` | 设额度，0=取消 | `pkg`,`minutes` | 默认档 | 只改配置；额度用尽后才可能冻 |
 | `addlimit` | 加/减额度（可负） | `pkg`,`delta` | `cap_addlimit` | 减到低于已用 → 可能立刻触发冻结 |
 | `resetlimit` | 清今天已用（额度保留） | `pkg` | `cap_resetlimit` | 已冻的应用靠它变回“未超限” |
@@ -52,6 +54,8 @@
 | `task` | 派任务 | `kind`,`pkg`,`minutes`,`floor` | `cap_task` + 任务模式开 | `use` 会把其他应用冻掉 |
 | `lock` | 全屏锁定 | `minutes`,`passcode`,`message` | 默认档 | **整屏被遮住**，只能等倒计时或口令 |
 | `unlock` | 立刻解除锁定 | — | 默认档 | 仅解除遮罩 |
+| `update` | 拉取更新 | — | — | — |
+
 
 - 如使用operit插件请以插件介绍为主
 </details>  
@@ -83,7 +87,7 @@ monitoring：全部完整功能
 #### 2. 额度与冻结
 - 给任意应用设额度（分钟，0=取消）、加/减额度、重置今日已用
 - 达上限按策略处理：
-- **锁定额度**（`locklimit`）：达上限必冻，直到解除锁定或跨天
+- **锁定额度**（`locklimit`）：达上限必冻，直到跨天解除锁定
 - **冻结记账只在真的冻成功后写**；失败会写「冻结失败」并在 Shizuku 恢复时**自动补冻**
 - 跨天重置：清统计、解冻自动冻结、清额度锁定
 ---
